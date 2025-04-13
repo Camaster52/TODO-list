@@ -1,0 +1,8 @@
+@font-face 
+{
+    font-family: "myFontItim";
+    src: url("../../fonts/AnyConv.com__Itim-Regular.woff2") format("woff2"),
+    url("../../fonts/AnyConv.com__Itim-Regular.woff") format("woff");
+    font-style: normal;
+    font-weight: 400;
+}

@@ -1,0 +1,58 @@
+body
+{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; 
+    margin: 0;
+}
+/* шапка */
+.header
+{
+    display: flex;
+    height: 7rem;
+    justify-content: center;
+}
+.header__container
+{
+    display: flex;
+    justify-content: space-between;
+    width: 45rem;
+    color: #4437D7
+}
+.header__container--nametext
+{
+    font-size: 2rem;
+}
+.header__container--list
+{
+    font-size: 2rem;
+}
+.header__linecont
+{
+    display: flex;
+    justify-content: center;
+    margin-top: -20px;
+}
+.header__line
+{
+
+    border-bottom: 5px solid #d1c6e6;
+    border-radius: 3px;
+    width: 52rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

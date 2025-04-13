@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Achex">
+    <meta name="description" content="Артем сын шлюхи">
+    <title>MyTodoList</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <!-- header -->
+    <header class="header">
+        <div class="header__container">
+            <p class="header__container--nametext">Friendly reminder</p>
+            <p class="header__container--list">Your list</p>
+        </div>
+    </header>
+    <!-- main tasks -->
+    <main class="main">
+        <div class="header__linecont">
+            <div class="header__line"></div>
+        </div>
+        <section class="BtnCheckmarkSection">
+            <div class="BtnCheckmarkSection__fullcont">
+                <div class="BtnCheckmarkSection__addbtn">
+                    <button class="BtnCheckmarkSection__addbtn--btn">add</button>
+                </div>
+                <div class="BtnCheckmarkSection__checkmark">
+                    <input type="checkbox" class="BtnCheckmarkSection__checkmark--checkmark">
+                    <p class="BtnCheckmarkSection__checkmark--text">recieve the list by email</p>
+                </div>
+            </div>
+        </section>
+        <!-- будет создаваться в js -->
+        <!-- <section class="tasks">
+            <div class="tasks__cont">
+                <textarea name="task" type="text" class="tasks__cont--input"></textarea>
+                <button class="tasks__cont--btnDelete">&times;</button>
+            </div>
+        </section> -->
+    </main>
+    <!-- footer -->
+    <footer class="footer">
+        <div class="footer__text">
+            <p class="footer__text--aboutauthor">© 2025 friendly reminder<br>made by achex with ❤️</p>
+        </div>
+    </footer>
+    <script src="../JavaScript/createTasks/tasks.js"></script>
+</body>
+</html>

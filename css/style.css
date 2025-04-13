@@ -1,0 +1,8 @@
+/* Blocks */
+@import "blocks/header.css";
+@import "blocks/main.css";
+@import "blocks/footer.css";
+@import "blocks/registr.css";
+
+/* Global */
+@import "global/fonts.css"
