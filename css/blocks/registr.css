@@ -1,164 +1,57 @@
-
-.section 
-{
+.reg_wrapper {
     display: flex;
-    position: absolute;
-    justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    height: 100vh;
+    padding-top: 20px;
 }
 
-.window 
+.reg_window 
 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 1rem;
-    width: 28rem;
-    height: 35rem;
-    position: relative;
-    padding: 3px; 
-    box-sizing: border-box; 
-    overflow: hidden;
-    z-index: 3;
-    /* box-shadow: 20px 20px 15px 1px rgb(109, 109, 109); */
-}
-
-.gradient-border 
-{
-    /* ебаный пиздец */
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    border-radius: 1rem; 
-    /* background: linear-gradient(45deg, #ff0066, #00ccff, #ffcc00, #66ff00, #fa0869 , rgb(255, 205, 236));  */
-    background: linear-gradient(45deg, #1100ff, #b5e1ff, #9b6fff , #8effca);
-    background-size: 400%;
-    animation: gradient-animation 4s ease infinite;
-    z-index: 0;
-}
-
-.window__registration 
-{
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    height: 100%;
-    width: 100%;
-    background-color: white;
-    /* background: linear-gradient(90deg, rgb(189, 201, 255), rgb(195, 184, 255)); */
-    border-radius: 0.8rem; 
-    z-index: 1;
-    padding: 20px;
-    box-sizing: border-box;
-}
-
-@keyframes gradient-animation 
-{
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
+    justify-content: center;
+    width: 60%;
+    max-width: 500px;
+    margin-top: 20px;
 }
 
 .window__registration--infotext 
 {
-    display: flex;
+    margin-bottom: 20px;
     font-weight: bold;
-    margin-top: 0px;
+    color: #4437D7;
+    font-size: calc(24px + (17 * 0.7) * ((100vw - 320px) / 1280));
+    text-align: center;
+    text-wrap: wrap;
 }
-.window__registration--text 
+
+.window__registration--label
 {
     color: #4437D7;
-    letter-spacing: 5px;
-    font-size: 2.5rem;
-    transition: all 0.2s ease-in-out;
-    margin-top: 0px;
-}
-.window__registration--text:hover 
-{
-    letter-spacing: 13px;
-    
-}
-.window__registration--login 
-{
-    display: flex;
-    flex-direction: column;
-    gap: 0rem;
-    margin-top: -2rem;
-}
-.window__registration--textemail ,.window__registration--textpassword
-{
-    color: #4437D7;
-    font-size: 1.7rem;
+    font-size: calc(20px + (20 * 0.7) * ((100vw - 320px) / 1280));
     letter-spacing: 3px;
 }
+
 .window__registration--email ,.window__registration--password
 {
-    position: absolute;
-    top: 1px;  
-    left: 1px; 
     width: calc(100% - 4px); 
     height: calc(100% - 4px); 
-    resize: none;
-    padding: 6px;
-    border-radius: 5px; 
-    border: none;
-    background: white; 
+    border-radius: 5px;
+    border: 2px solid #2b1fab;
     box-sizing: border-box; 
-    transition: all 0.2s ease-in-out;
 }
-.window__registration--email:focus 
-{
-    outline: none;
-}
-.gradient-border--emailInput,.gradient-border--passwordInput
-{
-    
-    position: relative;
-    display: inline-block;
-    width: 15rem;
-    height: 2.7rem;
-    padding: 2px;
-    border-radius: 7px;
-    background: linear-gradient(45deg, #00ccff, #f766a0 ,  #0026ff); 
-    background-size: 400% 400%; 
-    animation: gradient-borderInput-animation 3s ease infinite;
-}
-@keyframes gradient-borderInput-animation
-{
-    0%{background-position: 0% 50%;}
-    50%{background-position: 100%  50%;}
-    100% { background-position: 0%  50% ;}
-}
-.window__registration--passwordcont 
-{
-    margin-top: 1rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0rem;
-}
-.window__registration--password:focus
-{
-    outline: none;
-}
-.window__registration--password,.window__registration--email:hover
-{
-    cursor: pointer;
-}
-.window__registration--add
+
+.window__registration--btns
 {
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     margin-top: 3.2rem;
+    padding-bottom: 20px;
 }
+
 .window__registration--button
 {
     font-size: 1.1rem;
@@ -170,15 +63,13 @@
     height: 2.5rem;
     transition: all 0.4s ease-in-out;
 }
+
 .window__registration--button:hover
 {
     background-color:#2f89ff;
     cursor: pointer;
 }
-.window__registration--button:active
-{
-    transform: scale(90%)
-}
+
 .window__registration--emailError,.window__registration--passwordError
 {
     margin-top: 0px;

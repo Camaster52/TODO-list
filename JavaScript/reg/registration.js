@@ -1,5 +1,5 @@
 // Попап с регистрацией
-const popup = document.querySelector(".section")
+const popup = document.querySelector(".reg_window")
 
 // Выполнится при загрузке страницы
 document.addEventListener("DOMContentLoaded", () => {
@@ -11,11 +11,23 @@ document.addEventListener("DOMContentLoaded", () => {
     popup.style.backdropFilter = 'blur(5px)'
 })
 
-
-// кнопка для регистрации
+// кнопки
 const regBtn = document.querySelector(".window__registration--button")
+const loginBtn = document.getElementById("login_btn")
 
-regBtn.addEventListener("click" , () =>
+loginBtn.addEventListener("click", () => {
+    // получаем значения введённые пользователем
+    const emailText = document.querySelector(".window__registration--email").value
+    const passwordText = document.querySelector(".window__registration--password").value
+
+    let ok = validateInputs(emailText, passwordText)
+    if (!ok)
+        return
+
+    // login...
+})
+
+regBtn.addEventListener("click", async () =>
 {
     // получаем значения введённые пользователем
     const emailText = document.querySelector(".window__registration--email").value
@@ -25,8 +37,18 @@ regBtn.addEventListener("click" , () =>
     if (!ok)
         return // неправильный ввод - выходим из функции
 
-    // валидация прошла успешно - прячем попап с регистрацией
-    popup.style.display = "none"
+    let response = await fetch("http://localhost:8080/api/v1/users/new", {
+        method: "POST",
+        body: JSON.stringify({
+            email: emailText,
+            password: passwordText
+        })
+    })
+
+    if (!response.ok) {
+        console.error(response.json())
+        return
+    }
 });
 
 // validateInputs возвращает true, если все проверки прошли успешно; иначе false.

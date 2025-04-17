@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/blocks/registr.css">
+</head>
+<body>
+    <div class="reg_wrapper">
+        <section class="reg_window">
+            <div class="window__registration--infotext">
+                <p class="window__registration--text">Registration</p>
+            </div>
+            <div class="window__registration--login" style="margin-bottom: 20px;">
+                <label class="window__registration--label">Email</label>
+                <div class="gradient-border--emailInput">
+                    <input name="email" type="email" class="window__registration--email" required>
+                </div>
+                <p class="window__registration--emailError"></p>
+            </div>
+            <div class="window__registration--passwordcont">
+                <label class="window__registration--label">Password</label>
+                <div class="gradient-border--passwordInput">
+                    <input name="Passowrd" type="password" class="window__registration--password">
+                </div>
+                <p class="window__registration--passwordError"></p>
+            </div>
+            <div class="window__registration--btns">
+                <button type="submit" class="window__registration--button">Register</button>
+                <button type="submit" class="window__registration--button" id="login_btn">Log in</button>
+            </div>
+        </section>
+    </div>
+    <script src="../JavaScript/reg/registration.js"></script>
+</body>
+</html>
