@@ -1,110 +1,79 @@
-// Попап с регистрацией
-const popup = document.querySelector(".reg_window")
+const regErr = document.querySelector(".window__registration--regerr")
+const notification = document.querySelector(".confirm-email__info")
 
-// Выполнится при загрузке страницы
-document.addEventListener("DOMContentLoaded", () => {
-    // показываем попап с регистрацией
-    popup.style.display = "flex"
+// вводы почты и пароля
+const emailInput = document.querySelector(".window__registration--email")
+const pwdInput = document.querySelector(".window__registration--password")
 
-    // размываем задний фон попапа
-    // CSS: backdrop-filter: blur(5px);
-    popup.style.backdropFilter = 'blur(5px)'
-})
-
-// кнопки
+// кнопки ркгистрации или входа в аккаунт
 const regBtn = document.querySelector(".window__registration--button")
 const loginBtn = document.getElementById("login_btn")
 
-loginBtn.addEventListener("click", () => {
+const setRegErr = (msg) => {
+    regErr.innerText = msg
+    notification.innerText = ""
+}
+
+loginBtn.addEventListener("click", (e) => {    
     // получаем значения введённые пользователем
-    const emailText = document.querySelector(".window__registration--email").value
-    const passwordText = document.querySelector(".window__registration--password").value
+    const emailText = emailInput.value
+    const passwordText = pwdInput.value
 
-    let ok = validateInputs(emailText, passwordText)
-    if (!ok)
-        return
-
-    // login...
-})
-
-regBtn.addEventListener("click", async () =>
-{
-    // получаем значения введённые пользователем
-    const emailText = document.querySelector(".window__registration--email").value
-    const passwordText = document.querySelector(".window__registration--password").value
-
-    let ok = validateInputs(emailText, passwordText)
-    if (!ok)
-        return // неправильный ввод - выходим из функции
-
-    let response = await fetch("http://localhost:8080/api/v1/users/new", {
+    fetch("http://localhost:8080/api/v1/users/login", {
         method: "POST",
         body: JSON.stringify({
             email: emailText,
             password: passwordText
         })
     })
+    .then(res => {
+        if (!res.ok)
+            throw new Error("Неправильная электронная почта или пароль")
+        return res.text()
+    })
+    .then(jwt => {
+        // успешный вход в аккаунт
+        localStorage.setItem("jwt", jwt)
+        document.location.href = "index.html"
+        console.log(localStorage.getItem("jwt"));
+    })
+    .catch(err => setRegErr(err.message))
+})
 
-    if (!response.ok) {
-        console.error(response.json())
-        return
-    }
-});
+regBtn.addEventListener("click", () =>
+{
+    // получаем значения введённые пользователем
+    const emailText = emailInput.value
+    const passwordText = pwdInput.value
 
-// validateInputs возвращает true, если все проверки прошли успешно; иначе false.
-const validateInputs = (emailText, passwordText) => {
-    const minLen = 8
-    const maxLen = 22
+    fetch("http://localhost:8080/api/v1/users/new", {
+        method: "POST",
+        body: JSON.stringify({
+            email: emailText,
+            password: passwordText
+        })
+    })
+    .then(res => {
+        switch (res.status) {
+            case 403:
+                setRegErr("Пользователь с данной электронной почтой уже существует")
+                return
 
-    if(!emailText.includes("@"))
-    {
-        document.querySelector(".window__registration--emailError").innerText = "Incorrect email!"
-        console.error("Incorrect email!")
-        return false
-    }
+            case 400:
+                setRegErr("Неправильные данные")
+                return
+        
+            default:
+                notification.innerText = "Проверьте почту! Вам отправлено письмо с ссылкой для подтверждения"
+                regErr.innerText = ""
+                break
+        }
+    })
+})
 
-    if(!emailText)
-    {
-        console.error("Please fill in correctly!")
-        document.querySelector(".window__registration--emailError").innerText = "Please fill in correctly!"
-        document.querySelector(".window__registration--emailError").innerText = ""
-        document.querySelector(".window__registration--passwordError").innerText = ""
-        return false
-    }
-
-    if(!emailText && !passwordText)
-    {
-        console.error("Please fill in correctly!")
-        document.querySelector(".window__registration--emailError").innerText = "Please fill in correctly!"
-        document.querySelector(".window__registration--passwordError").innerText = "Please fill in correctly!"
-        return false
-    }
-    
-    if(!passwordText)
-    {
-        console.error("Please fill in correctly!")
-        document.querySelector(".window__registration--passwordError").innerText = "Please fill in correctly!"
-        document.querySelector(".window__registration--emailError").innerText = ""
-        document.querySelector(".window__registration--emailError").innerText = ""
-        return false
-    }
-    
-    if(passwordText.length > maxLen)
-    {
-        document.querySelector(".window__registration--passwordError").innerText = "Many symbols!"
-        console.error("Many symbols!")
-        return false
-    }
-    
-    if(passwordText.length < minLen)
-    {
-        document.querySelector(".window__registration--passwordError").innerText = "Few symbols!"
-        console.error("Few symbols!")
-        return false
-    }
-    
-    console.log(`Email: ${emailText} , Password: ${passwordText}`)
-    document.querySelector(".window__registration--emailError").innerText = ""
-    document.querySelector(".window__registration--passwordError").innerText = ""
-    return true
+const resetErr = () => {
+    regErr.innerText = ""
 }
+
+emailInput.addEventListener("input", resetErr)
+pwdInput.addEventListener("input", resetErr)

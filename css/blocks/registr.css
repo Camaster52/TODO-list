@@ -1,7 +1,7 @@
 .reg_wrapper {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    height: 100vh;
     padding-top: 20px;
 }
 
@@ -70,7 +70,16 @@
     cursor: pointer;
 }
 
-.window__registration--emailError,.window__registration--passwordError
+.confirm-email__info, .window__registration--regerr {
+    font-size: calc(20px + (10 * 0.7) * ((100vw - 320px) / 1280));
+    text-align: center;
+    color: #4437D7;
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.window__registration--regerr
 {
     margin-top: 0px;
     color: rgb(165, 64, 64);
