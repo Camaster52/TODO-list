@@ -11,17 +11,56 @@ const hideCreateSection = () => {
 
 cancelCreateBtn.addEventListener("click", hideCreateSection)
 
-confirmCreateBtn.addEventListener("click", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+    let res = await fetch("http://localhost:8080/api/v1/tasks/list", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("jwt"),
+        }
+    })
+
+    let body = await res.json()
+
+    if (!res.ok) {
+        console.error(body)
+        return
+    }
+
+    body.forEach(task => {
+        let created = createTask(task["value"])
+        created.id = "task"+task["task_id"]
+    });
+})
+
+confirmCreateBtn.addEventListener("click", async () => {
     if (createTaskInput.value == "")
         return
+    let res = await fetch("http://localhost:8080/api/v1/tasks/new", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": "Bearer " + localStorage.getItem("jwt"),
+        },
+        body: JSON.stringify({
+            value: createTaskInput.value
+        })
+    })
+
+    if (!res.ok) {
+        console.error("something went wrong...\n" + await res.json());
+        return;
+    }
+
+    console.log("created task");
+    
     createTask(createTaskInput.value)
     hideCreateSection()
 })
 
 const addBtn = document.querySelector(".BtnCheckmarkSection__addbtn--btn")
 
-addBtn.addEventListener("click" , ()=> 
-{
+addBtn.addEventListener("click" , () =>  {
     createTaskSection.style.display = "flex"
 })
 
@@ -53,4 +92,6 @@ const createTask = (text) => {
     {
         taskBlock.remove();
     })
+
+    return taskBlock
 }
