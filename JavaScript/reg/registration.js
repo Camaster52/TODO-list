@@ -34,7 +34,7 @@ loginBtn.addEventListener("click", (e) => {
     .then(jwt => {
         // успешный вход в аккаунт
         localStorage.setItem("jwt", jwt)
-        document.location.href = "index.html"
+        document.location.href = "../../templates/list.html"
         console.log(localStorage.getItem("jwt"));
     })
     .catch(err => setRegErr(err.message))

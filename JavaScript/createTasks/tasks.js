@@ -1,34 +1,30 @@
 document.querySelector(".BtnCheckmarkSection__addbtn--btn").addEventListener("click" , ()=> 
 {
-    // create section
-    const section = document.createElement("section")
-    section.className = "tasks"
+    const section = document.querySelector(".tasks")
 
     //create div container
-    const divBlock = document.createElement("div")
-    divBlock.className = "tasks__cont"
+    const taskBlock = document.createElement("div")
+    taskBlock.className = "tasks__cont"
 
     //create textarea
-    const textarea = document.createElement('textarea');
-    textarea.className = "tasks__cont--input"
-    textarea.type = "text"
-    textarea.name = "task"
+    const input = document.createElement('input');
+    input.className = "tasks__cont--input"
+    input.type = "text"
+    input.name = "task"
 
     //create buttonDelete
     const btn = document.createElement("button")
     btn.className = "tasks__cont--btnDelete"
     btn.innerHTML = "&times;"
 
-    document.querySelector('.main').appendChild(section);
+    section.appendChild(taskBlock)
 
-    section.appendChild(divBlock)
+    taskBlock.appendChild(input);
 
-    divBlock.appendChild(textarea);
-
-    divBlock.appendChild(btn);
+    taskBlock.appendChild(btn);
 
     btn.addEventListener("click" , ()=>
     {
-        section.remove();
+        taskBlock.remove();
     })
 })

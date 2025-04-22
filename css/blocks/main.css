@@ -1,23 +1,18 @@
 /* первая секция */
 .BtnCheckmarkSection
 {
-    margin-top: 3.7rem;
+    margin-top: 50px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    flex-wrap: wrap-reverse;
+    gap: 20px;
+    margin-right: 20px;
+    margin-left: 20px;
 }
-.BtnCheckmarkSection__fullcont
-{
-    display: flex;
-    justify-content: space-between;
-    width: 45rem;
-}
-.BtnCheckmarkSection__addbtn
-{
-    display: flex;
-}
+
 .BtnCheckmarkSection__addbtn--btn
 {
-    font-size: 1.2rem;
+    font-size: calc(17px + (10 * 0.7) * ((100vw - 320px) / 1280));
     color: rgb(255, 255, 255);
     width: 6rem;
     height: 3rem;
@@ -26,48 +21,51 @@
     border-radius: 5px;
     transition: all 0.26s ease-in-out;
 }
-.BtnCheckmarkSection__addbtn--btn:active
+.BtnCheckmarkSection__addbtn--btn:hover
 {
     color: black;
     background-color: rgb(182, 165, 255);
 }
-.BtnCheckmarkSection__addbtn--btn:hover
-{
-    transform: scale(90%);
-    border-radius: 10px 20px 10px 20px;
-}
+
 .BtnCheckmarkSection__checkmark
 {
     display: flex;
-
+    align-items: center;
+}
+.BtnCheckmarkSection__checkmark--checkmark {
+    margin: 0;
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
 }
 .BtnCheckmarkSection__checkmark--text
 {
     color: #4437D7;
-    font-size: 1.5rem;
+    margin: 0;
+    font-size: calc(17px + (10 * 0.7) * ((100vw - 320px) / 1280));
+    text-align: center;
 }
-.BtnCheckmarkSection__checkmark--checkmark
-{
-    margin-top: 7px;
-    width: 1.6rem;
-}
+
 .tasks
 {
-    display: flex;
-    margin-left: 17.5rem;
-    margin-top: 3rem;
-    margin-bottom: 3rem;
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 80%;
 }
 .tasks__cont
 {
+    margin-top: 20px;
     display: flex;
+    justify-content: center;
+    height: 50px;
 }
 .tasks__cont--input
 {
-    width: 42rem;
-    height: 3rem;
+    width: 80%;
     border-radius: 5px; 
     resize: none;
+    border: 1px solid;
 }
 .tasks__cont--input:focus
 {
@@ -76,24 +74,18 @@
 }
 .tasks__cont--btnDelete
 {
-    font-size: 3rem;
-    background: none;
-    border: none;
-    background-color: rgb(77, 63, 63);
+    font-size: 50px;
+    line-height: 50px;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(250, 33, 33);
     color: white;
-    width: 3rem;
-    height: 3.3rem;
     border-radius: 5px;
-    transition: all 0.2s ease-in-out;
+    border: none;
+    transition: all 0.15s ease-in-out;
 }
-.tasks__cont--btnDelete:hover
+
+.tasks__cont--btnDelete:active
 {
-    color: red;
-    background-color: #4437D7;
-}
-#MainBlur,#HeadBlur,#FooterBlur
-{
-    filter:blur(6.5px);
-    pointer-events: none;
-    user-select: none;
+    background-color: rgb(170, 25, 25);
 }

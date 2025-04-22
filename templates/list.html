@@ -13,40 +13,36 @@
 
 <body>
     <!-- header -->
-    <header class="header">
+    <header>
         <div class="header__container">
             <p class="header__container--nametext">Friendly reminder</p>
             <p class="header__container--list">Your list</p>
         </div>
-    </header>
-    <!-- main tasks -->
-    <main class="main">
         <div class="header__linecont">
             <div class="header__line"></div>
         </div>
+    </header>
+    <!-- main tasks -->
+    <main class="main">        
         <section class="BtnCheckmarkSection">
-            <div class="BtnCheckmarkSection__fullcont">
-                <div class="BtnCheckmarkSection__addbtn">
-                    <button class="BtnCheckmarkSection__addbtn--btn">add</button>
-                </div>
-                <div class="BtnCheckmarkSection__checkmark">
-                    <input type="checkbox" class="BtnCheckmarkSection__checkmark--checkmark">
-                    <p class="BtnCheckmarkSection__checkmark--text">recieve the list by email</p>
-                </div>
+            <button class="BtnCheckmarkSection__addbtn--btn">add</button>
+            <div class="BtnCheckmarkSection__checkmark">
+                <input type="checkbox" class="BtnCheckmarkSection__checkmark--checkmark">
+                <p class="BtnCheckmarkSection__checkmark--text">recieve the list by email</p>
             </div>
         </section>
         <!-- будет создаваться в js -->
-        <!-- <section class="tasks">
-            <div class="tasks__cont">
-                <textarea name="task" type="text" class="tasks__cont--input"></textarea>
+        <section class="tasks">
+            <!-- <div class="tasks__cont">
+                <input placeholder="Введите текст" name="task" type="text" class="tasks__cont--input"></input>
                 <button class="tasks__cont--btnDelete">&times;</button>
-            </div>
-        </section> -->
+            </div> -->
+        </section>
     </main>
     <!-- footer -->
     <footer class="footer">
         <div class="footer__text">
-            <p class="footer__text--aboutauthor">© 2025 friendly reminder<br>made by achex with ❤️</p>
+            <p class="footer__text--aboutauthor">&copy; 2025 friendly reminder<br>made by achex with ❤️</p>
         </div>
     </footer>
     <script src="../JavaScript/createTasks/tasks.js"></script>

@@ -6,53 +6,34 @@ body
     margin: 0;
 }
 /* шапка */
-.header
-{
-    display: flex;
-    height: 7rem;
-    justify-content: center;
-}
 .header__container
 {
+    margin: 0 auto;
+    margin-top: 30px;
+    margin-bottom: 30px;
     display: flex;
-    justify-content: space-between;
-    width: 45rem;
-    color: #4437D7
+    flex-wrap: wrap;
+    gap: 20px;
+    text-align: center;
+    justify-content: space-around;
+    width: 80%;
+    color: #4437D7;
+    font-size: calc(25px + (10 * 0.7) * ((100vw - 320px) / 1280));
+    font-family: cursive;
 }
-.header__container--nametext
-{
-    font-size: 2rem;
+
+.header__container--nametext {
+    font-weight: bold;
 }
-.header__container--list
-{
-    font-size: 2rem;
-}
+
 .header__linecont
 {
     display: flex;
     justify-content: center;
-    margin-top: -20px;
 }
 .header__line
 {
-
     border-bottom: 5px solid #d1c6e6;
     border-radius: 3px;
-    width: 52rem;
+    width: 80%;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
