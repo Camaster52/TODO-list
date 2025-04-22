@@ -12,39 +12,38 @@
 </head>
 
 <body>
-    <!-- header -->
-    <header>
-        <div class="header__container">
-            <p class="header__container--nametext">Friendly reminder</p>
-            <p class="header__container--list">Your list</p>
-        </div>
-        <div class="header__linecont">
-            <div class="header__line"></div>
-        </div>
-    </header>
-    <!-- main tasks -->
-    <main class="main">        
-        <section class="BtnCheckmarkSection">
-            <button class="BtnCheckmarkSection__addbtn--btn">add</button>
-            <div class="BtnCheckmarkSection__checkmark">
-                <input type="checkbox" class="BtnCheckmarkSection__checkmark--checkmark">
-                <p class="BtnCheckmarkSection__checkmark--text">recieve the list by email</p>
+    <div id="wrapper">
+        <!-- header -->
+        <header>
+            <div class="header__container">
+                <p class="header__container--nametext">Friendly reminder</p>
+                <p class="header__container--list">Your list</p>
             </div>
-        </section>
-        <!-- будет создаваться в js -->
-        <section class="tasks">
-            <!-- <div class="tasks__cont">
-                <input placeholder="Введите текст" name="task" type="text" class="tasks__cont--input"></input>
-                <button class="tasks__cont--btnDelete">&times;</button>
-            </div> -->
-        </section>
-    </main>
-    <!-- footer -->
-    <footer class="footer">
-        <div class="footer__text">
-            <p class="footer__text--aboutauthor">&copy; 2025 friendly reminder<br>made by achex with ❤️</p>
-        </div>
-    </footer>
+            <div class="header__linecont">
+                <div class="header__line"></div>
+            </div>
+        </header>
+        <!-- main tasks -->
+        <main class="main">        
+            <section class="BtnCheckmarkSection">
+                <button class="BtnCheckmarkSection__addbtn--btn">add</button>
+                <div class="BtnCheckmarkSection__checkmark">
+                    <input type="checkbox" class="BtnCheckmarkSection__checkmark--checkmark">
+                    <p class="BtnCheckmarkSection__checkmark--text">recieve the list by email</p>
+                </div>
+            </section>
+            <!-- будет создаваться в js -->
+            <section class="tasks">
+                <div class="create-task-popup">
+                    <input placeholder="Введите текст" name="task" type="text" class="task-input"></input>
+                    <div class="create-task-popup__btns">
+                        <button class="tasks__cont--btnAdd">Добавить</button>
+                        <button class="tasks__cont--btnCancel">Отменить</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
     <script src="../JavaScript/createTasks/tasks.js"></script>
     <script src="../JavaScript/reg/check_auth.js"></script>
 </body>
