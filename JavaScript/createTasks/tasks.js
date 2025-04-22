@@ -28,9 +28,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     body.forEach(task => {
-        let created = createTask(task["value"])
-        created.id = "task"+task["task_id"]
-    });
+        createTask(task["value"], task["task_id"])
+    })
 })
 
 confirmCreateBtn.addEventListener("click", async () => {
@@ -47,14 +46,16 @@ confirmCreateBtn.addEventListener("click", async () => {
         })
     })
 
+    let body = await res.json()
+
     if (!res.ok) {
-        console.error("something went wrong...\n" + await res.json());
+        console.error("something went wrong...\n" + body);
         return;
     }
 
-    console.log("created task");
+    console.log(`created task ${body["value"]}`);
     
-    createTask(createTaskInput.value)
+    createTask(createTaskInput.value, body["task_id"])
     hideCreateSection()
 })
 
@@ -64,10 +65,12 @@ addBtn.addEventListener("click" , () =>  {
     createTaskSection.style.display = "flex"
 })
 
-const createTask = (text) => {
+const createTask = (text, taskId) => {
     //create div container
     const taskBlock = document.createElement("div")
     taskBlock.className = "tasks__cont"
+
+    taskBlock.id = "task"+taskId
 
     //create textarea
     const input = document.createElement('input');
@@ -78,20 +81,29 @@ const createTask = (text) => {
     input.readOnly = true;
 
     //create buttonDelete
-    const btn = document.createElement("button")
-    btn.className = "tasks__cont--btnDelete"
-    btn.innerHTML = "&times;"
+    const rmBtn = document.createElement("button")
+    rmBtn.className = "tasks__cont--btnDelete"
+    rmBtn.innerHTML = "&times;"
 
     tasksSection.appendChild(taskBlock)
 
     taskBlock.appendChild(input);
 
-    taskBlock.appendChild(btn);
+    taskBlock.appendChild(rmBtn);
 
-    btn.addEventListener("click" , () =>
+    rmBtn.addEventListener("click", async () =>
     {
+        let res = await fetch("http://localhost:8080/api/v1/tasks/del/"+taskId, {
+            method: "DELETE",
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem("jwt")
+            }
+        })
+
+        if (!res.ok) {
+            console.error(await res.text());
+            return
+        }
         taskBlock.remove();
     })
-
-    return taskBlock
 }
