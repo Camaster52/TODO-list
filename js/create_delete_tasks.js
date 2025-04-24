@@ -12,11 +12,12 @@ const hideCreateSection = () => {
 cancelCreateBtn.addEventListener("click", hideCreateSection)
 
 document.addEventListener("DOMContentLoaded", async () => {
+    let udata = JSON.parse(localStorage.getItem("udata"))
     let res = await fetch("http://localhost:8080/api/v1/tasks/list", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem("jwt"),
+            "Authorization": "Bearer " + udata["jwt"],
         }
     })
 
@@ -35,11 +36,12 @@ document.addEventListener("DOMContentLoaded", async () => {
 confirmCreateBtn.addEventListener("click", async () => {
     if (createTaskInput.value == "")
         return
+    let udata = JSON.parse(localStorage.getItem("udata"))
     let res = await fetch("http://localhost:8080/api/v1/tasks/new", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": "Bearer " + localStorage.getItem("jwt"),
+            "Authorization": "Bearer " + udata["jwt"],
         },
         body: JSON.stringify({
             value: createTaskInput.value
@@ -91,12 +93,12 @@ const createTask = (text, taskId) => {
 
     taskBlock.appendChild(rmBtn);
 
-    rmBtn.addEventListener("click", async () =>
-    {
+    rmBtn.addEventListener("click", async () => {
+        let udata = JSON.parse(localStorage.getItem("udata"))
         let res = await fetch("http://localhost:8080/api/v1/tasks/del/"+taskId, {
             method: "DELETE",
             headers: {
-                "Authorization": "Bearer " + localStorage.getItem("jwt")
+                "Authorization": "Bearer " + udata["jwt"]
             }
         })
 

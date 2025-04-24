@@ -1,7 +1,6 @@
 
 document.addEventListener("DOMContentLoaded", () => {
-    let jwt = localStorage.getItem("jwt")
-    if (jwt == null) {
+    if (localStorage.getItem("udata") == null) {
         document.location.href = "reg.html"
     }
 })
