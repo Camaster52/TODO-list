@@ -19,7 +19,7 @@ loginBtn.addEventListener("click", (e) => {
     const emailText = emailInput.value
     const passwordText = pwdInput.value
 
-    fetch("http://localhost:8080/api/v1/users/login", {
+    fetch("https://friendly-reminder.onrender.com/api/v1/users/login", {
         method: "POST",
         body: JSON.stringify({
             email: emailText,
@@ -49,7 +49,7 @@ regBtn.addEventListener("click", () =>
     const emailText = emailInput.value
     const passwordText = pwdInput.value
 
-    fetch("http://localhost:8080/api/v1/users/new", {
+    fetch("https://friendly-reminder.onrender.com/api/v1/users/new", {
         method: "POST",
         body: JSON.stringify({
             email: emailText,

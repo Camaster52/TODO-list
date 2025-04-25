@@ -3,7 +3,7 @@ const checkbox = document.querySelector(".BtnCheckmarkSection__checkmark--checkm
 document.addEventListener("DOMContentLoaded", async () => {
     let udata = JSON.parse(localStorage.getItem("udata"))
     let email = udata["email"]
-    let res = await fetch("http://localhost:8080/api/v1/users/"+email, {
+    let res = await fetch("https://friendly-reminder.onrender.com/api/v1/users/"+email, {
         method: "GET"
     })
 
@@ -26,7 +26,7 @@ checkbox.addEventListener("click", async () => {
 
 const subscribe = async (subscr) => {
     let udata = JSON.parse(localStorage.getItem("udata"))
-    let res = await fetch("http://localhost:8080/api/v1/users/subscribe?subscribe="+subscr, {
+    let res = await fetch("https://friendly-reminder.onrender.com/api/v1/users/subscribe?subscribe="+subscr, {
         method: "PATCH",
         headers: {
             "Authorization": "Bearer " + udata["jwt"]

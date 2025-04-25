@@ -13,7 +13,7 @@ cancelCreateBtn.addEventListener("click", hideCreateSection)
 
 document.addEventListener("DOMContentLoaded", async () => {
     let udata = JSON.parse(localStorage.getItem("udata"))
-    let res = await fetch("http://localhost:8080/api/v1/tasks/list", {
+    let res = await fetch("https://friendly-reminder.onrender.com/api/v1/tasks/list", {
         method: "GET",
         headers: {
             "Content-Type": "application/json",
@@ -37,7 +37,7 @@ confirmCreateBtn.addEventListener("click", async () => {
     if (createTaskInput.value == "")
         return
     let udata = JSON.parse(localStorage.getItem("udata"))
-    let res = await fetch("http://localhost:8080/api/v1/tasks/new", {
+    let res = await fetch("https://friendly-reminder.onrender.com/api/v1/tasks/new", {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
@@ -95,7 +95,7 @@ const createTask = (text, taskId) => {
 
     rmBtn.addEventListener("click", async () => {
         let udata = JSON.parse(localStorage.getItem("udata"))
-        let res = await fetch("http://localhost:8080/api/v1/tasks/del/"+taskId, {
+        let res = await fetch("https://friendly-reminder.onrender.com/api/v1/tasks/del/"+taskId, {
             method: "DELETE",
             headers: {
                 "Authorization": "Bearer " + udata["jwt"]
