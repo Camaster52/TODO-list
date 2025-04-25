@@ -67,7 +67,7 @@ regBtn.addEventListener("click", () =>
                 return
         
             default:
-                notification.innerText = "Проверьте почту! Вам отправлено письмо с ссылкой для подтверждения"
+                notification.innerText = "Проверьте почту! Вам отправлено письмо с ссылкой для подтверждения. Не забудьте проверить спам"
                 regErr.innerText = ""
                 break
         }
