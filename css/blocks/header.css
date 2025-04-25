@@ -19,7 +19,7 @@ body
     width: 80%;
     color: #4437D7;
     font-size: calc(25px + (10 * 0.7) * ((100vw - 320px) / 1280));
-    font-family: cursive;
+    font-family: "Cascadia Code", sans-serif;
 }
 
 .header__container--nametext {
