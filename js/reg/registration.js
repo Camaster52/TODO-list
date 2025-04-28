@@ -37,7 +37,7 @@ loginBtn.addEventListener("click", (e) => {
             "jwt": jwt,
             "email": emailText
         }))
-        document.location.href = "../../templates/list.html"
+        document.location.href = "index.html"
         console.log(localStorage.getItem("udata"));
     })
     .catch(err => setRegErr(err.message))
