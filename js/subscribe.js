@@ -3,7 +3,7 @@ const checkbox = document.querySelector(".BtnCheckmarkSection__checkmark--checkm
 document.addEventListener("DOMContentLoaded", async () => {
     let udata = JSON.parse(localStorage.getItem("udata"))
     let email = udata["email"]
-    let res = await fetch("https://friendly-reminder.onrender.com/api/v1/users/"+email, {
+    let res = await fetch("https://friendly-reminder-xasp.onrender.com/api/v1/users/"+email, {
         method: "GET"
     })
 
